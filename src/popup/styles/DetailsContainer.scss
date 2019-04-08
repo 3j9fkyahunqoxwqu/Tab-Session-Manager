@@ -1,5 +1,102 @@
 .detailsContainer {
-  ul {
+  overflow-y: auto;
+  margin-top: 10px;
+  .windowContainer {
+    margin-bottom: 10px;
+    .windowInfo,
+    .tabs .tabContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3px 0px;
+      width: 100%;
+
+      .favIcon {
+        width: 16px;
+        height: 16px;
+        padding-right: 8px;
+        flex-shrink: 0;
+      }
+
+      .removeButton {
+        width: 15px;
+        height: 15px;
+        opacity: 0;
+        transition: opacity 100ms;
+        svg {
+          width: 13px;
+          height: 12px;
+          fill: var(--sub-text);
+          transform: rotate(45deg);
+        }
+        &:hover svg {
+          fill: var(--confirm);
+        }
+      }
+      &:hover .removeButton {
+        opacity: 1;
+      }
+    }
+
+    .windowInfo {
+      .leftWrapper {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        .collapseButton {
+          margin-right: 5px;
+          transform: rotate(180deg);
+          transition: transform 100ms;
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
+        .windowTitle {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          line-height: 1.5em;
+        }
+        .tabsNumber {
+          color: var(--sub-text);
+          margin-left: 10px;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .tabs {
+      margin-left: 32px;
+      .tabContainer {
+        .tabButton {
+          display: flex;
+          align-items: center;
+          max-width: 100%;
+          overflow: hidden;
+          .tabTitle {
+            line-height: 1.3em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+
+    &.isCollapsed {
+      .windowInfo .collapseButton {
+        transform: rotate(90deg);
+      }
+      .tabs {
+        display: none;
+      }
+    }
+  }
+
+  /*ul {
     list-style-type: none;
     padding-left: 0px;
   }
@@ -19,6 +116,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 3px 0px;
     width: 100%;
 
     .itemTitleButton {
@@ -67,9 +165,24 @@
       }
     }
   }
+  */
+
+  button {
+    display: block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    text-align: left;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 /*transition*/
+/*
 $duration: 300ms;
 .detailsContainer {
   opacity: 1;
@@ -108,3 +221,4 @@ $duration: 300ms;
     }
   }
 }
+*/
